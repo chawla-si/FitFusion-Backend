@@ -1,0 +1,90 @@
+CREATE
+DATABASE IF NOT EXISTS `fitfusiondatabase`;
+USE
+`fitfusiondatabase`;
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT = @@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS = @@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION = @@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE = @@TIME_ZONE */;
+/*!40103 SET TIME_ZONE = '+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS = @@UNIQUE_CHECKS, UNIQUE_CHECKS = 0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS = @@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS = 0 */;
+/*!40101 SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES = @@SQL_NOTES, SQL_NOTES = 0 */;
+
+
+CREATE TABLE Exercise
+(
+    exerciseId INT PRIMARY KEY,
+    name       VARCHAR(255) NOT NULL,
+    duration   INT,
+    intensity  VARCHAR(50)
+);
+CREATE TABLE Schedule
+(
+    scheduleId INT PRIMARY KEY,
+    dayOfWeek  VARCHAR(20) NOT NULL,
+    startTime  TIME,
+    endTime    TIME
+);
+CREATE TABLE FitnessPlan
+(
+    id       INT PRIMARY KEY,
+    planName VARCHAR(255) NOT NULL,
+    goals    VARCHAR(255)
+);
+CREATE TABLE User
+(
+    id       INT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Customer
+(
+    userId        INT PRIMARY KEY,
+    fitnessPlanId INT,
+    FOREIGN KEY (userId) REFERENCES User (id),
+    FOREIGN KEY (fitnessPlanId) REFERENCES FitnessPlan (id)
+);
+
+CREATE TABLE Trainer
+(
+    userId INT PRIMARY KEY,
+    wage DOUBLE NOT NULL,
+    FOREIGN KEY (userId) REFERENCES User (id)
+);
+
+CREATE TABLE FitnessClass
+(
+    classId    INT PRIMARY KEY,
+    className  VARCHAR(255) NOT NULL,
+    trainerId  INT,
+    scheduleId INT,
+    image      MEDIUMBLOB,
+    FOREIGN KEY (trainerId) REFERENCES Trainer (userId),
+    FOREIGN KEY (scheduleId) REFERENCES Schedule (scheduleId)
+);
+CREATE TABLE FitnessClassParticipants
+(
+    classId INT,
+    userId  INT,
+    PRIMARY KEY (classId, userId),
+    FOREIGN KEY (classId) REFERENCES FitnessClass (classId),
+    FOREIGN KEY (userId) REFERENCES User (id)
+);
+
+UNLOCK
+TABLES;
+/*!40103 SET TIME_ZONE = @OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE = @OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES = @OLD_SQL_NOTES */;
+
