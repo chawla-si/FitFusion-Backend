@@ -17,14 +17,14 @@ USE
 
 CREATE TABLE Exercise
 (
-    exerciseId INT PRIMARY KEY,
+    exercise_id INT PRIMARY KEY,
     name       VARCHAR(255) NOT NULL,
     duration   INT,
     intensity  VARCHAR(50)
 );
 CREATE TABLE Schedule
 (
-    scheduleId INT PRIMARY KEY,
+    schedule_id INT PRIMARY KEY,
     dayOfWeek  VARCHAR(20) NOT NULL,
     startTime  TIME,
     endTime    TIME
@@ -44,7 +44,7 @@ CREATE TABLE User
 
 CREATE TABLE Customer
 (
-    userId        INT PRIMARY KEY,
+    user_id        INT PRIMARY KEY,
     fitnessPlanId INT,
     FOREIGN KEY (userId) REFERENCES User (id),
     FOREIGN KEY (fitnessPlanId) REFERENCES FitnessPlan (id)
@@ -52,14 +52,14 @@ CREATE TABLE Customer
 
 CREATE TABLE Trainer
 (
-    userId INT PRIMARY KEY,
+    user_id INT PRIMARY KEY,
     wage DOUBLE NOT NULL,
     FOREIGN KEY (userId) REFERENCES User (id)
 );
 
 CREATE TABLE FitnessClass
 (
-    classId    INT PRIMARY KEY,
+    class_id    INT PRIMARY KEY,
     className  VARCHAR(255) NOT NULL,
     trainerId  INT,
     scheduleId INT,
@@ -69,7 +69,7 @@ CREATE TABLE FitnessClass
 );
 CREATE TABLE FitnessClassParticipants
 (
-    classId INT,
+    class_id INT,
     userId  INT,
     PRIMARY KEY (classId, userId),
     FOREIGN KEY (classId) REFERENCES FitnessClass (classId),

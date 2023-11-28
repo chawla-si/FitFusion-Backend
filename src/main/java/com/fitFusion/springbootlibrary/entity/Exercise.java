@@ -10,8 +10,8 @@ public class Exercise {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "exerciseId")
-    private Long id;
+    @Column(name = "exercise_id")
+    private Long exerciseId;
 
     @Column(name = "name")
     private String name;
@@ -19,13 +19,7 @@ public class Exercise {
     @Column(name = "duration")
     private int duration;
 
-    @Column(name = "inensity")
-    private String inensity;
+    @Column(name = "intensity")
+    private String intensity;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public Long getId() {
-        return id;
-    }
 }
