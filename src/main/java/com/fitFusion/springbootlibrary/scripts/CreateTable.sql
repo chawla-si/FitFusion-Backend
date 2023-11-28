@@ -60,20 +60,20 @@ CREATE TABLE Trainer
 CREATE TABLE FitnessClass
 (
     class_id    INT PRIMARY KEY,
-    className  VARCHAR(255) NOT NULL,
-    trainerId  INT,
-    scheduleId INT,
+    class_name  VARCHAR(255) NOT NULL,
+    trainer_id  INT,
+    schedule_id INT,
     image      MEDIUMBLOB,
-    FOREIGN KEY (trainerId) REFERENCES Trainer (userId),
-    FOREIGN KEY (scheduleId) REFERENCES Schedule (scheduleId)
+    FOREIGN KEY (trainer_id) REFERENCES Trainer (user_id),
+    FOREIGN KEY (schedule_id) REFERENCES Schedule (schedule_id)
 );
 CREATE TABLE FitnessClassParticipants
 (
     class_id INT,
-    userId  INT,
-    PRIMARY KEY (classId, userId),
-    FOREIGN KEY (classId) REFERENCES FitnessClass (classId),
-    FOREIGN KEY (userId) REFERENCES User (id)
+    user_id  INT,
+    PRIMARY KEY (class_id, user_id),
+    FOREIGN KEY (class_id) REFERENCES FitnessClass (class_id),
+    FOREIGN KEY (user_id) REFERENCES User (id)
 );
 
 UNLOCK
