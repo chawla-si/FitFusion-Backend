@@ -12,7 +12,7 @@ import lombok.Data;
 @Entity
 @Table(name = "fitness_class")
 @Data
-public class FitnessClass {
+public class FitnessClass implements Comparable<FitnessClass> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "class_id")
@@ -30,4 +30,9 @@ public class FitnessClass {
     @Lob
     @Column(name = "image")
     private byte[] image;
+
+    @Override
+    public int compareTo(FitnessClass other) {
+        return this.className.compareTo(other.getClassName());
+    }
 }
