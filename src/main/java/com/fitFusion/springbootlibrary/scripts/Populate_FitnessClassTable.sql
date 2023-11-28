@@ -2,7 +2,7 @@ USE
 `fitfusiondatabase`;
 
 -- Insert data into FitnessClass table
-INSERT INTO FitnessClass (class_id, class_name, trainer_id, schedule_id, image)
+INSERT INTO fitness_class (class_id, class_name, trainer_id, schedule_id, image)
 VALUES (1, 'Yoga Fusion', 21, 1, NULL),
        (2, 'HIIT Extreme', 22, 2, NULL),
        (3, 'Dance Cardio Party', 23, 3, NULL),

@@ -57,7 +57,7 @@ CREATE TABLE Trainer
     FOREIGN KEY (userId) REFERENCES User (id)
 );
 
-CREATE TABLE FitnessClass
+CREATE TABLE fitness_class
 (
     class_id    INT PRIMARY KEY,
     class_name  VARCHAR(255) NOT NULL,
