@@ -29,7 +29,7 @@ VALUES (1, 'john_doe', 'password123'),
 
 
 -- Insert data into Customer table
-INSERT INTO Customer (userId, fitnessPlanId)
+INSERT INTO Customer (userId, fitness_plan_id)
 VALUES (1, 1), -- User ID 1 is associated with FitnessPlan ID 1
        (2, 2),
        (3, 3),

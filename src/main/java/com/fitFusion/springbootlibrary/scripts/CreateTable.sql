@@ -45,9 +45,9 @@ CREATE TABLE User
 CREATE TABLE Customer
 (
     user_id        INT PRIMARY KEY,
-    fitnessPlanId INT,
-    FOREIGN KEY (userId) REFERENCES User (id),
-    FOREIGN KEY (fitnessPlanId) REFERENCES FitnessPlan (id)
+    fitness_plan_id INT,
+    FOREIGN KEY (user_id) REFERENCES User (id),
+    FOREIGN KEY (fitness_plan_id) REFERENCES FitnessPlan (id)
 );
 
 CREATE TABLE Trainer
