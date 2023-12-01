@@ -16,13 +16,21 @@ public class CsvService {
     @Autowired
     private CustomerRepository customerRepository;
 
+
     @Transactional
     public void readAndSaveDataFromCsv(String csvFilePath) throws IOException, CsvException {
         try (CSVReader reader = new CSVReader(new FileReader(csvFilePath))) {
-            reader.readAll().forEach(row -> {
-                Customer customer = new Customer(row[0], row[1]);
-                customerRepository.save(customer);
-            });
+            reader.readAll().stream()
+                    .map(row -> {
+                        try {
+                            return new Customer(row[0], row[1]);
+                        } catch (NumberFormatException e) {
+                            System.err.println("Invalid numeric value in CSV: " + e.getMessage());
+                            return null;
+                        }
+                    })
+                    .filter(customer -> customer != null)
+                    .forEach(customerRepository::save);
         }
     }
 }

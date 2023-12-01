@@ -15,7 +15,7 @@ public class CsvController {
     @PostMapping("/api/upload-csv")
     public String uploadCsvFile(@RequestParam("file") String file) {
         try {
-            csvService.readAndSaveDataFromCsv(String.valueOf(file));
+            csvService.readAndSaveDataFromCsv(file);
             return "File uploaded and data saved successfully.";
         } catch (Exception e) {
             System.out.println("**: "+e);
