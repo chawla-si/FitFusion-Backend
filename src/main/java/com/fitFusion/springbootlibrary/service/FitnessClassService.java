@@ -15,6 +15,11 @@ public class FitnessClassService {
     @Autowired
     private FitnessClassRepository fitnessClassRepository;
 
+    public byte[] getImageBytes(Long classId) {
+        // Implement logic to retrieve image bytes from the database or another source
+        return /* Image bytes */;
+    }
+
     public List<FitnessClass> getSortedFitnessClasses() {
         Sort sort = Sort.by(Sort.Direction.ASC, "className");
 
