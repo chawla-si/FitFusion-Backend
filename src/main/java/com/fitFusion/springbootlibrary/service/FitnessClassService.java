@@ -15,9 +15,9 @@ public class FitnessClassService {
     @Autowired
     private FitnessClassRepository fitnessClassRepository;
 
-    public byte[] getImageBytes(Long classId) {
-        // Implement logic to retrieve image bytes from the database or another source
-        return /* Image bytes */;
+    public void getImageBytes(Long classId) {
+
+
     }
 
     public List<FitnessClass> getSortedFitnessClasses() {

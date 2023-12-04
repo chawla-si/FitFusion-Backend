@@ -1,7 +1,6 @@
 package com.fitFusion.springbootlibrary.entity;
 
-import jakarta.persistence.Embeddable;
-
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Embeddable

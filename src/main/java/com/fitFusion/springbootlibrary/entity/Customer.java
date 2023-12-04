@@ -1,8 +1,6 @@
 package com.fitFusion.springbootlibrary.entity;
 
-import jakarta.persistence.*;
-
-import java.io.Serializable;
+import javax.persistence.*;
 
 @Entity
 public class Customer {
