@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin( origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/fitnessClasses")
 public class FitnessClassController {

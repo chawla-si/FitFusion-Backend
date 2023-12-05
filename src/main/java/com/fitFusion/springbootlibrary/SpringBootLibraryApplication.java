@@ -13,12 +13,26 @@ public class SpringBootLibraryApplication {
         SpringApplication.run(SpringBootLibraryApplication.class, args);
     }
 
+    //    @Bean
+//    public WebMvcConfigurer corsConfigurer(){
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry){
+//                registry.addMapping("/**")
+//                        .allowedOrigins("http://localhost:5173") // Update with your React app's URL
+//                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+//                        .allowedHeaders("Content-Type")
+//                        .allowCredentials(true)
+//                        .maxAge(3600);
+//            }
+//        };
+//    }
     @Bean
-    public WebMvcConfigurer corsConfigurer(){
+    public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
-            public void addCorsMappings(CorsRegistry registry){
-                registry.addMapping("/**").allowedOrigins("http://localhost:5173");
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("http://localhost:5174");
             }
         };
     }
